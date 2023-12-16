@@ -9,47 +9,57 @@
         #pesquisa{
             width: 50%;
         }
-          .container{
-        height: 800px;  
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        background-color: brown;
-        border-radius: 25%;
-        background-image: url('./img/fundo.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        
-    }
-     .resumo{
-        justify-content: center;
-        background-color: bisque;
-        align-items: center;
-        text-align: center;
-        display: flex;
-        left:15%;
-        flex-direction: column;
-     }
-     
-     #personagens{display: flex;
-      flex-direction: column;
-      align-items: center;
-     justify-content: center; 
-     }
-     #personagens img{
-        width: 200px;
-        height: 200px;
-     }
-     .character {
-       text-align: center;
+
+        .container{
+            height: 800px;  
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            background-color: brown;
+            border-radius: 25%;
+            background-image: url('./img/fundo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+           
+        }
+
+        #resumo{
+          position: absolute;
+            background-color: bisque;
+            left: 50%;
+            top: 65%;
+            transform: translate(-50%, -50%); 
+            flex-direction: column;
+            overflow-y: auto;
+            visibility: hidden;
+            height: 50%;
+            width: 70%;
+
+            
        
-    } 
+        }
+      
+        #personagens{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+        }
+
+        #personagens img{
+            width: 200px;
+            height: 200px;
+        }
+
+        .character {
+            text-align: center; 
+        } 
   
-    .titulo{
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-    }
+        .titulo{
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -59,17 +69,14 @@
         <br><br><br>
         <input type="text" id="pesquisa" placeholder="Digite o nome do personagem"><br><br>
         <button id="busca">Buscar</button><br><br><br><br><br><br>
-        <div class="resumo">
-          
+        <div class="resumo" id="resumo">
            <div id="personagens"><div id="nomePersonagem"> </div></div><br>
         </div>
     </div>
 
     <script>
-       
-       
-          var nome = $("#pesquisa").val();
-         var timeStamp ='1';
+        var nome = $("#pesquisa").val();
+        var timeStamp ='1';
         
         var privateKey = 'c6bbfb822bf28ca44a8c37264003510d5dbcebff';
         var publicKey = '72ab4595469ad65a8a0b212f43b8e9be';
@@ -106,6 +113,7 @@
             characterDiv.append('<div><h4>Descrição não disponível</h4></div>');
           }
           $("#personagens").append(characterDiv);
+          $('#resumo').css('visibility','visible');
         });
       }
     });

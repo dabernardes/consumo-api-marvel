@@ -19,12 +19,11 @@
             border-radius: 25%;
             background-image: url('./img/fundo.jpg');
             background-repeat: no-repeat;
-            background-size: cover;
-           
+            background-size: cover; 
         }
 
         #resumo{
-          position: absolute;
+            position: absolute;
             background-color: bisque;
             left: 50%;
             top: 65%;
@@ -34,9 +33,6 @@
             visibility: hidden;
             height: 50%;
             width: 70%;
-
-            
-       
         }
       
         #personagens{
@@ -112,6 +108,15 @@
           } else {
             characterDiv.append('<div><h4>Descrição não disponível</h4></div>');
           }
+          if(character.comics && character.comics.items) {
+            characterDiv.append('<div><h4>Quadrinhos:</h4></div>');
+            character.comics.items.forEach(comic => {
+            characterDiv.append('<div>'+ comic.name +'</div>');
+            });
+          } else {
+           characterDiv.append('<div><h4>Nenhum quadrinho disponível</h4></div>');
+          }
+          if(character.stories)
           $("#personagens").append(characterDiv);
           $('#resumo').css('visibility','visible');
         });
